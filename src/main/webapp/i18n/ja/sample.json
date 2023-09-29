@@ -1,0 +1,24 @@
+{
+  "demoApp": {
+    "sample": {
+      "home": {
+        "title": "Samples",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Sample を追加",
+        "createOrEditLabel": "Sampleを追加または編集",
+        "notFound": "No Samples found"
+      },
+      "created": "A new Sample is created with identifier {{ param }}",
+      "updated": "A Sample is updated with identifier {{ param }}",
+      "deleted": "A Sample is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Sample {{ id }}を削除してもよろしいですか？"
+      },
+      "detail": {
+        "title": "Sample"
+      },
+      "id": "ID",
+      "text": "Text"
+    }
+  }
+}

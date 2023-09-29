@@ -1,0 +1,24 @@
+{
+  "demoApp": {
+    "sample": {
+      "home": {
+        "title": "Samples",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "创建新 Sample",
+        "createOrEditLabel": "创建或编辑 Sample",
+        "notFound": "No Samples found"
+      },
+      "created": "Sample {{ param }} 创建成功",
+      "updated": "Sample {{ param }} 更新成功",
+      "deleted": "Sample {{ param }} 删除成功",
+      "delete": {
+        "question": "你确定要删除 Sample {{ id }} 吗？"
+      },
+      "detail": {
+        "title": "Sample"
+      },
+      "id": "ID",
+      "text": "Text"
+    }
+  }
+}

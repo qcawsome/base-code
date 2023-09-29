@@ -1,0 +1,24 @@
+{
+  "demoApp": {
+    "sample": {
+      "home": {
+        "title": "Samples",
+        "refreshListLabel": "Liste aktualisieren",
+        "createLabel": "Sample erstellen",
+        "createOrEditLabel": "Sample erstellen oder bearbeiten",
+        "notFound": "Keine Samples gefunden"
+      },
+      "created": "Sample erstellt mit ID {{ param }}",
+      "updated": "Sample aktualisiert mit ID {{ param }}",
+      "deleted": "Sample gelöscht mit ID {{ param }}",
+      "delete": {
+        "question": "Soll Sample {{ id }} wirklich dauerhaft gelöscht werden?"
+      },
+      "detail": {
+        "title": "Sample"
+      },
+      "id": "ID",
+      "text": "Text"
+    }
+  }
+}

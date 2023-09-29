@@ -1,0 +1,16 @@
+{
+  "changelogDate": "20230929010003",
+  "dto": "no",
+  "fields": [
+    {
+      "fieldName": "text",
+      "fieldType": "String"
+    }
+  ],
+  "jpaMetamodelFiltering": true,
+  "name": "Sample",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [],
+  "service": "serviceImpl"
+}
