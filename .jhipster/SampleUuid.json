@@ -1,0 +1,16 @@
+{
+  "changelogDate": "20230929012038",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "uuid",
+      "fieldType": "UUID"
+    }
+  ],
+  "jpaMetamodelFiltering": true,
+  "name": "SampleUuid",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [],
+  "service": "serviceClass"
+}

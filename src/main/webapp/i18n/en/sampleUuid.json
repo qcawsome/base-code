@@ -1,0 +1,24 @@
+{
+  "demoApp": {
+    "sampleUuid": {
+      "home": {
+        "title": "Sample Uuids",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Sample Uuid",
+        "createOrEditLabel": "Create or edit a Sample Uuid",
+        "notFound": "No Sample Uuids found"
+      },
+      "created": "A new Sample Uuid is created with identifier {{ param }}",
+      "updated": "A Sample Uuid is updated with identifier {{ param }}",
+      "deleted": "A Sample Uuid is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Sample Uuid {{ id }}?"
+      },
+      "detail": {
+        "title": "Sample Uuid"
+      },
+      "id": "ID",
+      "uuid": "Uuid"
+    }
+  }
+}

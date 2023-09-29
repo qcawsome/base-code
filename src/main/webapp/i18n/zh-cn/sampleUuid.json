@@ -1,0 +1,24 @@
+{
+  "demoApp": {
+    "sampleUuid": {
+      "home": {
+        "title": "Sample Uuids",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "创建新 Sample Uuid",
+        "createOrEditLabel": "创建或编辑 Sample Uuid",
+        "notFound": "No Sample Uuids found"
+      },
+      "created": "Sample Uuid {{ param }} 创建成功",
+      "updated": "Sample Uuid {{ param }} 更新成功",
+      "deleted": "Sample Uuid {{ param }} 删除成功",
+      "delete": {
+        "question": "你确定要删除 Sample Uuid {{ id }} 吗？"
+      },
+      "detail": {
+        "title": "Sample Uuid"
+      },
+      "id": "ID",
+      "uuid": "Uuid"
+    }
+  }
+}
