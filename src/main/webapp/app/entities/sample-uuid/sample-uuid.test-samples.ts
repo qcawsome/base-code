@@ -1,15 +1,15 @@
 import { ISampleUuid, NewSampleUuid } from './sample-uuid.model';
 
 export const sampleWithRequiredData: ISampleUuid = {
-  id: 18277,
+  id: '66cdc0e6-3ad0-495a-916c-fc4dab2358f0',
 };
 
 export const sampleWithPartialData: ISampleUuid = {
-  id: 43338,
+  id: '66cdc0e6-3ad0-495a-916c-fc4dab2358f1',
 };
 
 export const sampleWithFullData: ISampleUuid = {
-  id: 130,
+  id: '66cdc0e6-3ad0-495a-916c-fc4dab2358f2',
   uuid: '66cdc0e6-3ad0-495a-916c-fc4dab2358f2',
 };
 

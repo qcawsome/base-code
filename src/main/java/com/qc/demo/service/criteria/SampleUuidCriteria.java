@@ -21,7 +21,7 @@ public class SampleUuidCriteria implements Serializable, Criteria {
 
     private static final long serialVersionUID = 1L;
 
-    private LongFilter id;
+    private UUIDFilter id;
 
     private UUIDFilter uuid;
 
@@ -40,18 +40,18 @@ public class SampleUuidCriteria implements Serializable, Criteria {
         return new SampleUuidCriteria(this);
     }
 
-    public LongFilter getId() {
+    public UUIDFilter getId() {
         return id;
     }
 
-    public LongFilter id() {
+    public UUIDFilter id() {
         if (id == null) {
-            id = new LongFilter();
+            id = new UUIDFilter();
         }
         return id;
     }
 
-    public void setId(LongFilter id) {
+    public void setId(UUIDFilter id) {
         this.id = id;
     }
 

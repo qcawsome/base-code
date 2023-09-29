@@ -3,6 +3,7 @@ package com.qc.demo.domain;
 import java.io.Serializable;
 import java.util.UUID;
 import javax.persistence.*;
+import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Type;
 
 /**
@@ -16,10 +17,10 @@ public class SampleUuid implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequenceGenerator")
-    @SequenceGenerator(name = "sequenceGenerator")
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Type(type = "org.hibernate.type.UUIDCharType")
     @Column(name = "id")
-    private Long id;
+    private UUID id;
 
     @Type(type = "uuid-char")
     @Column(name = "uuid", length = 36)
@@ -27,16 +28,16 @@ public class SampleUuid implements Serializable {
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
-    public Long getId() {
+    public UUID getId() {
         return this.id;
     }
 
-    public SampleUuid id(Long id) {
+    public SampleUuid id(UUID id) {
         this.setId(id);
         return this;
     }
 
-    public void setId(Long id) {
+    public void setId(UUID id) {
         this.id = id;
     }
 

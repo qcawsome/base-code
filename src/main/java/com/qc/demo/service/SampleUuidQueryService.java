@@ -88,7 +88,7 @@ public class SampleUuidQueryService extends QueryService<SampleUuid> {
                 specification = specification.and(distinct(criteria.getDistinct()));
             }
             if (criteria.getId() != null) {
-                specification = specification.and(buildRangeSpecification(criteria.getId(), SampleUuid_.id));
+                specification = specification.and(buildSpecification(criteria.getId(), SampleUuid_.id));
             }
             if (criteria.getUuid() != null) {
                 specification = specification.and(buildSpecification(criteria.getUuid(), SampleUuid_.uuid));

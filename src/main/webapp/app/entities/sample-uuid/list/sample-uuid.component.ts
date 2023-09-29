@@ -35,7 +35,7 @@ export class SampleUuidComponent implements OnInit {
     protected modalService: NgbModal
   ) {}
 
-  trackId = (_index: number, item: ISampleUuid): number => this.sampleUuidService.getSampleUuidIdentifier(item);
+  trackId = (_index: number, item: ISampleUuid): string => this.sampleUuidService.getSampleUuidIdentifier(item);
 
   ngOnInit(): void {
     this.load();

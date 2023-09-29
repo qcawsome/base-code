@@ -104,7 +104,7 @@ class SampleUuidResourceIT {
     @Transactional
     void createSampleUuidWithExistingId() throws Exception {
         // Create the SampleUuid with an existing ID
-        sampleUuid.setId(1L);
+        sampleUuid.setId(UUID.fromString("77f1779f-a08b-4c5a-8526-948a914041cc"));
         SampleUuidDTO sampleUuidDTO = sampleUuidMapper.toDto(sampleUuid);
 
         int databaseSizeBeforeCreate = sampleUuidRepository.findAll().size();
@@ -130,7 +130,7 @@ class SampleUuidResourceIT {
             .perform(get(ENTITY_API_URL + "?sort=id,desc"))
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
-            .andExpect(jsonPath("$.[*].id").value(hasItem(sampleUuid.getId().intValue())))
+            .andExpect(jsonPath("$.[*].id").value(hasItem(sampleUuid.getId().toString())))
             .andExpect(jsonPath("$.[*].uuid").value(hasItem(DEFAULT_UUID.toString())));
     }
 
@@ -145,7 +145,7 @@ class SampleUuidResourceIT {
             .perform(get(ENTITY_API_URL_ID, sampleUuid.getId()))
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
-            .andExpect(jsonPath("$.id").value(sampleUuid.getId().intValue()))
+            .andExpect(jsonPath("$.id").value(sampleUuid.getId().toString()))
             .andExpect(jsonPath("$.uuid").value(DEFAULT_UUID.toString()));
     }
 
@@ -155,7 +155,7 @@ class SampleUuidResourceIT {
         // Initialize the database
         sampleUuidRepository.saveAndFlush(sampleUuid);
 
-        Long id = sampleUuid.getId();
+        UUID id = sampleUuid.getId();
 
         defaultSampleUuidShouldBeFound("id.equals=" + id);
         defaultSampleUuidShouldNotBeFound("id.notEquals=" + id);
@@ -214,7 +214,7 @@ class SampleUuidResourceIT {
             .perform(get(ENTITY_API_URL + "?sort=id,desc&" + filter))
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
-            .andExpect(jsonPath("$.[*].id").value(hasItem(sampleUuid.getId().intValue())))
+            .andExpect(jsonPath("$.[*].id").value(hasItem(sampleUuid.getId().toString())))
             .andExpect(jsonPath("$.[*].uuid").value(hasItem(DEFAULT_UUID.toString())));
 
         // Check, that the count call also returns 1
@@ -285,7 +285,7 @@ class SampleUuidResourceIT {
     @Transactional
     void putNonExistingSampleUuid() throws Exception {
         int databaseSizeBeforeUpdate = sampleUuidRepository.findAll().size();
-        sampleUuid.setId(count.incrementAndGet());
+        sampleUuid.setId(UUID.randomUUID());
 
         // Create the SampleUuid
         SampleUuidDTO sampleUuidDTO = sampleUuidMapper.toDto(sampleUuid);
@@ -308,7 +308,7 @@ class SampleUuidResourceIT {
     @Transactional
     void putWithIdMismatchSampleUuid() throws Exception {
         int databaseSizeBeforeUpdate = sampleUuidRepository.findAll().size();
-        sampleUuid.setId(count.incrementAndGet());
+        sampleUuid.setId(UUID.randomUUID());
 
         // Create the SampleUuid
         SampleUuidDTO sampleUuidDTO = sampleUuidMapper.toDto(sampleUuid);
@@ -331,7 +331,7 @@ class SampleUuidResourceIT {
     @Transactional
     void putWithMissingIdPathParamSampleUuid() throws Exception {
         int databaseSizeBeforeUpdate = sampleUuidRepository.findAll().size();
-        sampleUuid.setId(count.incrementAndGet());
+        sampleUuid.setId(UUID.randomUUID());
 
         // Create the SampleUuid
         SampleUuidDTO sampleUuidDTO = sampleUuidMapper.toDto(sampleUuid);
@@ -408,7 +408,7 @@ class SampleUuidResourceIT {
     @Transactional
     void patchNonExistingSampleUuid() throws Exception {
         int databaseSizeBeforeUpdate = sampleUuidRepository.findAll().size();
-        sampleUuid.setId(count.incrementAndGet());
+        sampleUuid.setId(UUID.randomUUID());
 
         // Create the SampleUuid
         SampleUuidDTO sampleUuidDTO = sampleUuidMapper.toDto(sampleUuid);
@@ -431,7 +431,7 @@ class SampleUuidResourceIT {
     @Transactional
     void patchWithIdMismatchSampleUuid() throws Exception {
         int databaseSizeBeforeUpdate = sampleUuidRepository.findAll().size();
-        sampleUuid.setId(count.incrementAndGet());
+        sampleUuid.setId(UUID.randomUUID());
 
         // Create the SampleUuid
         SampleUuidDTO sampleUuidDTO = sampleUuidMapper.toDto(sampleUuid);
@@ -454,7 +454,7 @@ class SampleUuidResourceIT {
     @Transactional
     void patchWithMissingIdPathParamSampleUuid() throws Exception {
         int databaseSizeBeforeUpdate = sampleUuidRepository.findAll().size();
-        sampleUuid.setId(count.incrementAndGet());
+        sampleUuid.setId(UUID.randomUUID());
 
         // Create the SampleUuid
         SampleUuidDTO sampleUuidDTO = sampleUuidMapper.toDto(sampleUuid);

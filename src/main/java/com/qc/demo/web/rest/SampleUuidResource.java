@@ -11,6 +11,7 @@ import java.net.URISyntaxException;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.UUID;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -86,7 +87,7 @@ public class SampleUuidResource {
      */
     @PutMapping("/sample-uuids/{id}")
     public ResponseEntity<SampleUuidDTO> updateSampleUuid(
-        @PathVariable(value = "id", required = false) final Long id,
+        @PathVariable(value = "id", required = false) final UUID id,
         @RequestBody SampleUuidDTO sampleUuidDTO
     ) throws URISyntaxException {
         log.debug("REST request to update SampleUuid : {}, {}", id, sampleUuidDTO);
@@ -121,7 +122,7 @@ public class SampleUuidResource {
      */
     @PatchMapping(value = "/sample-uuids/{id}", consumes = { "application/json", "application/merge-patch+json" })
     public ResponseEntity<SampleUuidDTO> partialUpdateSampleUuid(
-        @PathVariable(value = "id", required = false) final Long id,
+        @PathVariable(value = "id", required = false) final UUID id,
         @RequestBody SampleUuidDTO sampleUuidDTO
     ) throws URISyntaxException {
         log.debug("REST request to partial update SampleUuid partially : {}, {}", id, sampleUuidDTO);
@@ -181,7 +182,7 @@ public class SampleUuidResource {
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the sampleUuidDTO, or with status {@code 404 (Not Found)}.
      */
     @GetMapping("/sample-uuids/{id}")
-    public ResponseEntity<SampleUuidDTO> getSampleUuid(@PathVariable Long id) {
+    public ResponseEntity<SampleUuidDTO> getSampleUuid(@PathVariable UUID id) {
         log.debug("REST request to get SampleUuid : {}", id);
         Optional<SampleUuidDTO> sampleUuidDTO = sampleUuidService.findOne(id);
         return ResponseUtil.wrapOrNotFound(sampleUuidDTO);
@@ -194,7 +195,7 @@ public class SampleUuidResource {
      * @return the {@link ResponseEntity} with status {@code 204 (NO_CONTENT)}.
      */
     @DeleteMapping("/sample-uuids/{id}")
-    public ResponseEntity<Void> deleteSampleUuid(@PathVariable Long id) {
+    public ResponseEntity<Void> deleteSampleUuid(@PathVariable UUID id) {
         log.debug("REST request to delete SampleUuid : {}", id);
         sampleUuidService.delete(id);
         return ResponseEntity

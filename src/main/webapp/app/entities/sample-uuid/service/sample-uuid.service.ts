@@ -34,7 +34,7 @@ export class SampleUuidService {
     });
   }
 
-  find(id: number): Observable<EntityResponseType> {
+  find(id: string): Observable<EntityResponseType> {
     return this.http.get<ISampleUuid>(`${this.resourceUrl}/${id}`, { observe: 'response' });
   }
 
@@ -43,11 +43,11 @@ export class SampleUuidService {
     return this.http.get<ISampleUuid[]>(this.resourceUrl, { params: options, observe: 'response' });
   }
 
-  delete(id: number): Observable<HttpResponse<{}>> {
+  delete(id: string): Observable<HttpResponse<{}>> {
     return this.http.delete(`${this.resourceUrl}/${id}`, { observe: 'response' });
   }
 
-  getSampleUuidIdentifier(sampleUuid: Pick<ISampleUuid, 'id'>): number {
+  getSampleUuidIdentifier(sampleUuid: Pick<ISampleUuid, 'id'>): string {
     return sampleUuid.id;
   }
 

@@ -38,7 +38,7 @@ describe('SampleUuid Management Delete Component', () => {
         jest.spyOn(service, 'delete').mockReturnValue(of(new HttpResponse({ body: {} })));
 
         // WHEN
-        comp.confirmDelete(123);
+        comp.confirmDelete('66cdc0e6-3ad0-495a-916c-fc4dab2358f2');
         tick();
 
         // THEN

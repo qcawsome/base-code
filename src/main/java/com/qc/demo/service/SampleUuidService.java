@@ -5,6 +5,7 @@ import com.qc.demo.repository.SampleUuidRepository;
 import com.qc.demo.service.dto.SampleUuidDTO;
 import com.qc.demo.service.mapper.SampleUuidMapper;
 import java.util.Optional;
+import java.util.UUID;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
@@ -95,7 +96,7 @@ public class SampleUuidService {
      * @return the entity.
      */
     @Transactional(readOnly = true)
-    public Optional<SampleUuidDTO> findOne(Long id) {
+    public Optional<SampleUuidDTO> findOne(UUID id) {
         log.debug("Request to get SampleUuid : {}", id);
         return sampleUuidRepository.findById(id).map(sampleUuidMapper::toDto);
     }
@@ -105,7 +106,7 @@ public class SampleUuidService {
      *
      * @param id the id of the entity.
      */
-    public void delete(Long id) {
+    public void delete(UUID id) {
         log.debug("Request to delete SampleUuid : {}", id);
         sampleUuidRepository.deleteById(id);
     }

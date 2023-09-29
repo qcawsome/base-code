@@ -1,5 +1,5 @@
 export interface ISampleUuid {
-  id: number;
+  id: string;
   uuid?: string | null;
 }
 

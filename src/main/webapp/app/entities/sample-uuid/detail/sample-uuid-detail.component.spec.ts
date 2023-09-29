@@ -14,7 +14,7 @@ describe('SampleUuid Management Detail Component', () => {
       providers: [
         {
           provide: ActivatedRoute,
-          useValue: { data: of({ sampleUuid: { id: 123 } }) },
+          useValue: { data: of({ sampleUuid: { id: 'dc4279ea-cfb9-11ec-9d64-0242ac120002' } }) },
         },
       ],
     })
@@ -30,7 +30,7 @@ describe('SampleUuid Management Detail Component', () => {
       comp.ngOnInit();
 
       // THEN
-      expect(comp.sampleUuid).toEqual(expect.objectContaining({ id: 123 }));
+      expect(comp.sampleUuid).toEqual(expect.objectContaining({ id: 'dc4279ea-cfb9-11ec-9d64-0242ac120002' }));
     });
   });
 });

@@ -43,7 +43,7 @@ describe('SampleUuid routing resolve service', () => {
     it('should return ISampleUuid returned by find', () => {
       // GIVEN
       service.find = jest.fn(id => of(new HttpResponse({ body: { id } })));
-      mockActivatedRouteSnapshot.params = { id: 123 };
+      mockActivatedRouteSnapshot.params = { id: '66cdc0e6-3ad0-495a-916c-fc4dab2358f2' };
 
       // WHEN
       routingResolveService.resolve(mockActivatedRouteSnapshot).subscribe(result => {
@@ -51,8 +51,8 @@ describe('SampleUuid routing resolve service', () => {
       });
 
       // THEN
-      expect(service.find).toBeCalledWith(123);
-      expect(resultSampleUuid).toEqual({ id: 123 });
+      expect(service.find).toBeCalledWith('66cdc0e6-3ad0-495a-916c-fc4dab2358f2');
+      expect(resultSampleUuid).toEqual({ id: '66cdc0e6-3ad0-495a-916c-fc4dab2358f2' });
     });
 
     it('should return null if id is not provided', () => {
