@@ -6,8 +6,11 @@ import { PrimeNgTableUpdateComponent } from './update/prime-ng-table-update.comp
 import { PrimeNgTableDeleteDialogComponent } from './delete/prime-ng-table-delete-dialog.component';
 import { PrimeNgTableRoutingModule } from './route/prime-ng-table-routing.module';
 
+import { TableModule } from 'primeng/table';
+// import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+
 @NgModule({
-  imports: [SharedModule, PrimeNgTableRoutingModule],
+  imports: [SharedModule, PrimeNgTableRoutingModule, TableModule],
   declarations: [PrimeNgTableComponent, PrimeNgTableDetailComponent, PrimeNgTableUpdateComponent, PrimeNgTableDeleteDialogComponent],
 })
 export class PrimeNgTableModule {}

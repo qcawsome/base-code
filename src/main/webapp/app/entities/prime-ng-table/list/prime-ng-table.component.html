@@ -30,9 +30,9 @@
     <span jhiTranslate="demoApp.primeNgTable.home.notFound">No Prime Ng Tables found</span>
   </div>
 
-  <div class="table-responsive table-entities" id="entities" *ngIf="primeNgTables && primeNgTables.length > 0">
-    <table class="table table-striped" aria-describedby="page-heading">
-      <thead>
+  <div id="entities" *ngIf="primeNgTables && primeNgTables.length > 0">
+    <p-table [value]="primeNgTables" styleClass="p-datatable-sm">
+      <ng-template pTemplate="header">
         <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
           <th scope="col" jhiSortBy="id">
             <div class="d-flex">
@@ -84,9 +84,9 @@
           </th>
           <th scope="col"></th>
         </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let primeNgTable of primeNgTables; trackBy: trackId" data-cy="entityTable">
+      </ng-template>
+      <ng-template pTemplate="body" let-primeNgTable>
+        <tr class="p-selectable-row" data-cy="entityTable">
           <td>
             <a [routerLink]="['/prime-ng-table', primeNgTable.id, 'view']">{{ primeNgTable.id }}</a>
           </td>
@@ -135,8 +135,8 @@
             </div>
           </td>
         </tr>
-      </tbody>
-    </table>
+      </ng-template>
+    </p-table>
   </div>
 
   <div *ngIf="primeNgTables && primeNgTables.length > 0">
