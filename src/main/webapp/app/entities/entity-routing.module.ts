@@ -14,6 +14,11 @@ import { RouterModule } from '@angular/router';
         data: { pageTitle: 'demoApp.sampleUuid.home.title' },
         loadChildren: () => import('./sample-uuid/sample-uuid.module').then(m => m.SampleUuidModule),
       },
+      {
+        path: 'prime-ng-table',
+        data: { pageTitle: 'demoApp.primeNgTable.home.title' },
+        loadChildren: () => import('./prime-ng-table/prime-ng-table.module').then(m => m.PrimeNgTableModule),
+      },
       /* jhipster-needle-add-entity-route - JHipster will add entity modules routes here */
     ]),
   ],

@@ -1,0 +1,30 @@
+{
+  "demoApp": {
+    "primeNgTable": {
+      "home": {
+        "title": "Prime Ng Tables",
+        "refreshListLabel": "Liste aktualisieren",
+        "createLabel": "Prime Ng Table erstellen",
+        "createOrEditLabel": "Prime Ng Table erstellen oder bearbeiten",
+        "notFound": "Keine Prime Ng Tables gefunden"
+      },
+      "created": "Prime Ng Table erstellt mit ID {{ param }}",
+      "updated": "Prime Ng Table aktualisiert mit ID {{ param }}",
+      "deleted": "Prime Ng Table gelöscht mit ID {{ param }}",
+      "delete": {
+        "question": "Soll Prime Ng Table {{ id }} wirklich dauerhaft gelöscht werden?"
+      },
+      "detail": {
+        "title": "Prime Ng Table"
+      },
+      "id": "ID",
+      "text": "Text",
+      "number": "Number",
+      "floatNumber": "Float Number",
+      "date": "Date",
+      "zoneDate": "Zone Date",
+      "image": "Image",
+      "longText": "Long Text"
+    }
+  }
+}

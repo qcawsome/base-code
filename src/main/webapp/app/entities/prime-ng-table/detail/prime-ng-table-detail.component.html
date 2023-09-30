@@ -1,0 +1,65 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="primeNgTable">
+      <h2 data-cy="primeNgTableDetailsHeading"><span jhiTranslate="demoApp.primeNgTable.detail.title">Prime Ng Table</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ primeNgTable.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="demoApp.primeNgTable.text">Text</span></dt>
+        <dd>
+          <span>{{ primeNgTable.text }}</span>
+        </dd>
+        <dt><span jhiTranslate="demoApp.primeNgTable.number">Number</span></dt>
+        <dd>
+          <span>{{ primeNgTable.number }}</span>
+        </dd>
+        <dt><span jhiTranslate="demoApp.primeNgTable.floatNumber">Float Number</span></dt>
+        <dd>
+          <span>{{ primeNgTable.floatNumber }}</span>
+        </dd>
+        <dt><span jhiTranslate="demoApp.primeNgTable.date">Date</span></dt>
+        <dd>
+          <span>{{ primeNgTable.date | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="demoApp.primeNgTable.zoneDate">Zone Date</span></dt>
+        <dd>
+          <span>{{ primeNgTable.zoneDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="demoApp.primeNgTable.image">Image</span></dt>
+        <dd>
+          <div *ngIf="primeNgTable.image">
+            <a (click)="openFile(primeNgTable.image, primeNgTable.imageContentType)">
+              <img
+                [src]="'data:' + primeNgTable.imageContentType + ';base64,' + primeNgTable.image"
+                style="max-width: 100%"
+                alt="primeNgTable image"
+              />
+            </a>
+            {{ primeNgTable.imageContentType }}, {{ byteSize(primeNgTable.image) }}
+          </div>
+        </dd>
+        <dt><span jhiTranslate="demoApp.primeNgTable.longText">Long Text</span></dt>
+        <dd>
+          <span>{{ primeNgTable.longText }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/prime-ng-table', primeNgTable.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

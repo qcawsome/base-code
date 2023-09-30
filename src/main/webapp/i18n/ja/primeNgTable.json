@@ -1,0 +1,30 @@
+{
+  "demoApp": {
+    "primeNgTable": {
+      "home": {
+        "title": "PrimeNgTables",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Prime Ng Table を追加",
+        "createOrEditLabel": "Prime Ng Tableを追加または編集",
+        "notFound": "No Prime Ng Tables found"
+      },
+      "created": "A new Prime Ng Table is created with identifier {{ param }}",
+      "updated": "A Prime Ng Table is updated with identifier {{ param }}",
+      "deleted": "A Prime Ng Table is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Prime Ng Table {{ id }}を削除してもよろしいですか？"
+      },
+      "detail": {
+        "title": "Prime Ng Table"
+      },
+      "id": "ID",
+      "text": "Text",
+      "number": "Number",
+      "floatNumber": "Float Number",
+      "date": "Date",
+      "zoneDate": "Zone Date",
+      "image": "Image",
+      "longText": "Long Text"
+    }
+  }
+}

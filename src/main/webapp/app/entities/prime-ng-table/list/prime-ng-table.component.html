@@ -1,0 +1,159 @@
+<div>
+  <h2 id="page-heading" data-cy="PrimeNgTableHeading">
+    <span jhiTranslate="demoApp.primeNgTable.home.title">Prime Ng Tables</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="demoApp.primeNgTable.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-prime-ng-table"
+        [routerLink]="['/prime-ng-table/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="demoApp.primeNgTable.home.createLabel"> Create a new Prime Ng Table </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <jhi-filter [filters]="filters"></jhi-filter>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="primeNgTables?.length === 0">
+    <span jhiTranslate="demoApp.primeNgTable.home.notFound">No Prime Ng Tables found</span>
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="primeNgTables && primeNgTables.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" jhiSortBy="id">
+            <div class="d-flex">
+              <span jhiTranslate="global.field.id">ID</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="text">
+            <div class="d-flex">
+              <span jhiTranslate="demoApp.primeNgTable.text">Text</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="number">
+            <div class="d-flex">
+              <span jhiTranslate="demoApp.primeNgTable.number">Number</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="floatNumber">
+            <div class="d-flex">
+              <span jhiTranslate="demoApp.primeNgTable.floatNumber">Float Number</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="date">
+            <div class="d-flex">
+              <span jhiTranslate="demoApp.primeNgTable.date">Date</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="zoneDate">
+            <div class="d-flex">
+              <span jhiTranslate="demoApp.primeNgTable.zoneDate">Zone Date</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="image">
+            <div class="d-flex">
+              <span jhiTranslate="demoApp.primeNgTable.image">Image</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="longText">
+            <div class="d-flex">
+              <span jhiTranslate="demoApp.primeNgTable.longText">Long Text</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let primeNgTable of primeNgTables; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/prime-ng-table', primeNgTable.id, 'view']">{{ primeNgTable.id }}</a>
+          </td>
+          <td>{{ primeNgTable.text }}</td>
+          <td>{{ primeNgTable.number }}</td>
+          <td>{{ primeNgTable.floatNumber }}</td>
+          <td>{{ primeNgTable.date | formatMediumDate }}</td>
+          <td>{{ primeNgTable.zoneDate | formatMediumDatetime }}</td>
+          <td>
+            <a *ngIf="primeNgTable.image" (click)="openFile(primeNgTable.image, primeNgTable.imageContentType)">
+              <img
+                [src]="'data:' + primeNgTable.imageContentType + ';base64,' + primeNgTable.image"
+                style="max-height: 30px"
+                alt="primeNgTable image"
+              />
+            </a>
+            <span *ngIf="primeNgTable.image">{{ primeNgTable.imageContentType }}, {{ byteSize(primeNgTable.image) }}</span>
+          </td>
+          <td>{{ primeNgTable.longText }}</td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/prime-ng-table', primeNgTable.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/prime-ng-table', primeNgTable.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(primeNgTable)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="primeNgTables && primeNgTables.length > 0">
+    <div class="d-flex justify-content-center">
+      <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+    </div>
+
+    <div class="d-flex justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [page]="page"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="navigateToPage($event)"
+      ></ngb-pagination>
+    </div>
+  </div>
+</div>

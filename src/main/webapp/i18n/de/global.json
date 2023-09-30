@@ -9,6 +9,7 @@
         "main": "Entitäten",
         "sample": "Sample",
         "sampleUuid": "Sample Uuid",
+        "primeNgTable": "Prime Ng Table",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {
