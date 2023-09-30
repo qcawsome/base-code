@@ -7,7 +7,6 @@ import { PrimeNgTableDeleteDialogComponent } from './delete/prime-ng-table-delet
 import { PrimeNgTableRoutingModule } from './route/prime-ng-table-routing.module';
 
 import { TableModule } from 'primeng/table';
-// import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 @NgModule({
   imports: [SharedModule, PrimeNgTableRoutingModule, TableModule],

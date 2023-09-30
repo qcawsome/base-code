@@ -12,6 +12,7 @@ import { EntityArrayResponseType, PrimeNgTableService } from '../service/prime-n
 import { PrimeNgTableDeleteDialogComponent } from '../delete/prime-ng-table-delete-dialog.component';
 import { DataUtils } from 'app/core/util/data-util.service';
 import { FilterOptions, IFilterOptions, IFilterOption } from 'app/shared/filter/filter.model';
+import { LazyLoadEvent } from 'primeng/api';
 
 @Component({
   selector: 'jhi-prime-ng-table',
@@ -28,6 +29,7 @@ export class PrimeNgTableComponent implements OnInit {
   itemsPerPage = ITEMS_PER_PAGE;
   totalItems = 0;
   page = 1;
+  first = 0;
 
   constructor(
     protected primeNgTableService: PrimeNgTableService,
@@ -94,8 +96,19 @@ export class PrimeNgTableComponent implements OnInit {
 
   protected fillComponentAttributeFromRoute(params: ParamMap, data: Data): void {
     const page = params.get(PAGE_HEADER);
-    this.page = +(page ?? 1);
+
+    var pageNumber = Number(params.get('page') ?? '1');
+    this.itemsPerPage = Number(params.get('size') ?? '20');
+    if (pageNumber > 1) {
+      this.page = pageNumber;
+      this.first = this.itemsPerPage * (pageNumber - 1);
+    } else {
+      this.page = +(page ?? 1);
+      this.first = 0;
+    }
+
     const sort = (params.get(SORT) ?? data[DEFAULT_SORT_DATA]).split(',');
+
     this.predicate = sort[0];
     this.ascending = sort[1] === ASC;
     this.filters.initializeFromParams(params);
@@ -158,5 +171,15 @@ export class PrimeNgTableComponent implements OnInit {
     } else {
       return [predicate + ',' + ascendingQueryParam];
     }
+  }
+
+  protected sortColumn(event: LazyLoadEvent): void {}
+
+  protected loadData(event: LazyLoadEvent) {
+    this.itemsPerPage = (event.rows as number) ?? 20;
+    var predicate = (event.sortField as string) ?? 'id';
+    var ascending = event.sortOrder == 1 ? true : false;
+    var page = 1 + ((event.first as number) ?? 0) / this.itemsPerPage;
+    this.handleNavigation(page, predicate, ascending, this.filters.filterOptions);
   }
 }

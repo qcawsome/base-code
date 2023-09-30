@@ -31,55 +31,76 @@
   </div>
 
   <div id="entities" *ngIf="primeNgTables && primeNgTables.length > 0">
-    <p-table [value]="primeNgTables" styleClass="p-datatable-sm">
+    <p-table
+      [value]="primeNgTables"
+      styleClass="p-datatable-sm"
+      (onSort)="sortColumn($event)"
+      sortMode="single"
+      [totalRecords]="totalItems"
+      [paginator]="true"
+      [rows]="itemsPerPage"
+      [lazy]="true"
+      [sortField]="predicate"
+      (onLazyLoad)="loadData($event)"
+      [showCurrentPageReport]="true"
+      [first]="first"
+      currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+      [rowsPerPageOptions]="[3, 10, 20, 50]"
+    >
       <ng-template pTemplate="header">
-        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
-          <th scope="col" jhiSortBy="id">
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending">
+          <th pSortableColumn="id">
             <div class="d-flex">
               <span jhiTranslate="global.field.id">ID</span>
-              <fa-icon class="p-1" icon="sort"></fa-icon>
+              <p-sortIcon field="id"></p-sortIcon>
+              <p-columnFilter type="numeric" field="id" display="menu"></p-columnFilter>
             </div>
           </th>
-          <th scope="col" jhiSortBy="text">
+          <th pSortableColumn="text">
             <div class="d-flex">
               <span jhiTranslate="demoApp.primeNgTable.text">Text</span>
-              <fa-icon class="p-1" icon="sort"></fa-icon>
+              <p-sortIcon field="text"></p-sortIcon>
+              <p-columnFilter type="text" field="text" display="menu"></p-columnFilter>
             </div>
           </th>
-          <th scope="col" jhiSortBy="number">
+          <th pSortableColumn="number">
             <div class="d-flex">
               <span jhiTranslate="demoApp.primeNgTable.number">Number</span>
-              <fa-icon class="p-1" icon="sort"></fa-icon>
+              <p-sortIcon field="number"></p-sortIcon>
+              <p-columnFilter type="numeric" field="number" display="menu"></p-columnFilter>
             </div>
           </th>
-          <th scope="col" jhiSortBy="floatNumber">
+          <th pSortableColumn="floatNumber">
             <div class="d-flex">
               <span jhiTranslate="demoApp.primeNgTable.floatNumber">Float Number</span>
-              <fa-icon class="p-1" icon="sort"></fa-icon>
+              <p-sortIcon field="floatNumber"></p-sortIcon>
+              <p-columnFilter type="numeric" field="floatNumber" display="menu"></p-columnFilter>
             </div>
           </th>
-          <th scope="col" jhiSortBy="date">
+          <th pSortableColumn="date" scope="col" jhiSortBy="date">
             <div class="d-flex">
               <span jhiTranslate="demoApp.primeNgTable.date">Date</span>
-              <fa-icon class="p-1" icon="sort"></fa-icon>
+              <p-sortIcon field="date"></p-sortIcon>
+              <p-columnFilter type="date" field="date" display="menu"></p-columnFilter>
             </div>
           </th>
-          <th scope="col" jhiSortBy="zoneDate">
+          <th pSortableColumn="zoneDate" scope="col" jhiSortBy="zoneDate">
             <div class="d-flex">
               <span jhiTranslate="demoApp.primeNgTable.zoneDate">Zone Date</span>
-              <fa-icon class="p-1" icon="sort"></fa-icon>
+              <p-sortIcon field="zoneDate"></p-sortIcon>
+              <p-columnFilter type="date" field="zoneDate" display="menu"></p-columnFilter>
             </div>
           </th>
           <th scope="col" jhiSortBy="image">
             <div class="d-flex">
               <span jhiTranslate="demoApp.primeNgTable.image">Image</span>
-              <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
-          <th scope="col" jhiSortBy="longText">
+          <th pSortableColumn="longText" scope="col" jhiSortBy="longText">
             <div class="d-flex">
               <span jhiTranslate="demoApp.primeNgTable.longText">Long Text</span>
-              <fa-icon class="p-1" icon="sort"></fa-icon>
+              <p-sortIcon field="longText"></p-sortIcon>
+              <p-columnFilter type="text" field="longText" display="menu"></p-columnFilter>
             </div>
           </th>
           <th scope="col"></th>
@@ -138,7 +159,7 @@
       </ng-template>
     </p-table>
   </div>
-
+  <!-- 
   <div *ngIf="primeNgTables && primeNgTables.length > 0">
     <div class="d-flex justify-content-center">
       <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
@@ -155,5 +176,5 @@
         (pageChange)="navigateToPage($event)"
       ></ngb-pagination>
     </div>
-  </div>
+  </div> -->
 </div>
