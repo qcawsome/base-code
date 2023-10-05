@@ -24,7 +24,7 @@
 
   <jhi-alert></jhi-alert>
 
-  <jhi-filter [filters]="filters"></jhi-filter>
+  <!-- <jhi-filter [filters]="filters"></jhi-filter> -->
 
   <div class="alert alert-warning" id="no-result" *ngIf="primeNgTables?.length === 0">
     <span jhiTranslate="demoApp.primeNgTable.home.notFound">No Prime Ng Tables found</span>
@@ -42,6 +42,7 @@
       [lazy]="true"
       [sortField]="predicate"
       (onLazyLoad)="loadData($event)"
+      (filterChange)="onFilterChange('id', $event)"
       [showCurrentPageReport]="true"
       [first]="first"
       currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"

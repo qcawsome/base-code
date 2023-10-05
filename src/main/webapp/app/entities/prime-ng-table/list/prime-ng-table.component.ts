@@ -13,6 +13,7 @@ import { PrimeNgTableDeleteDialogComponent } from '../delete/prime-ng-table-dele
 import { DataUtils } from 'app/core/util/data-util.service';
 import { FilterOptions, IFilterOptions, IFilterOption } from 'app/shared/filter/filter.model';
 import { LazyLoadEvent } from 'primeng/api';
+import { FilterMetadata } from 'primeng/api';
 
 @Component({
   selector: 'jhi-prime-ng-table',
@@ -176,10 +177,33 @@ export class PrimeNgTableComponent implements OnInit {
   protected sortColumn(event: LazyLoadEvent): void {}
 
   protected loadData(event: LazyLoadEvent) {
+    // filter
+    const filters = event.filters as { [s: string]: [FilterMetadata] };
+    let column: string = '';
+    this.filters = new FilterOptions();
+    if (filters !== undefined && filters !== null) {
+      for (column in filters) {
+        console.log(column);
+        var ff = filters[column];
+        ff.forEach(meta => {
+          this.filters.addFilter(column + '.in', meta.value);
+
+          // need to change here just for testing filter
+
+          // date and zoneddatetime error format!!
+        });
+      }
+    }
+
+    // pagination
     this.itemsPerPage = (event.rows as number) ?? 20;
     var predicate = (event.sortField as string) ?? 'id';
     var ascending = event.sortOrder == 1 ? true : false;
     var page = 1 + ((event.first as number) ?? 0) / this.itemsPerPage;
     this.handleNavigation(page, predicate, ascending, this.filters.filterOptions);
+  }
+
+  protected onFilterChange(columnName: string, event: any): void {
+    this.loadData(event);
   }
 }
