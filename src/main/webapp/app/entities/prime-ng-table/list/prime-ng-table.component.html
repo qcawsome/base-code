@@ -7,7 +7,6 @@
         <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
         <span jhiTranslate="demoApp.primeNgTable.home.refreshListLabel">Refresh list</span>
       </button>
-
       <button
         id="jh-create-entity"
         data-cy="entityCreateButton"
@@ -32,6 +31,7 @@
 
   <div id="entities" *ngIf="primeNgTables && primeNgTables.length > 0">
     <p-table
+      #dt1
       [value]="primeNgTables"
       styleClass="p-datatable-sm"
       (onSort)="sortColumn($event)"
@@ -45,51 +45,50 @@
       (filterChange)="onFilterChange('id', $event)"
       [showCurrentPageReport]="true"
       [first]="first"
+      styleClass="p-datatable-gridlines"
+      [scrollable]="true"
+      scrollDirection="horizontal"
       currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
       [rowsPerPageOptions]="[3, 10, 20, 50]"
     >
       <ng-template pTemplate="header">
         <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending">
+          <!-- <tr> -->
+          <th scope="col"></th>
           <th pSortableColumn="id">
-            <div class="d-flex">
+            <div>
               <span jhiTranslate="global.field.id">ID</span>
               <p-sortIcon field="id"></p-sortIcon>
-              <p-columnFilter type="numeric" field="id" display="menu"></p-columnFilter>
             </div>
           </th>
           <th pSortableColumn="text">
             <div class="d-flex">
               <span jhiTranslate="demoApp.primeNgTable.text">Text</span>
               <p-sortIcon field="text"></p-sortIcon>
-              <p-columnFilter type="text" field="text" display="menu"></p-columnFilter>
             </div>
           </th>
           <th pSortableColumn="number">
             <div class="d-flex">
               <span jhiTranslate="demoApp.primeNgTable.number">Number</span>
               <p-sortIcon field="number"></p-sortIcon>
-              <p-columnFilter type="numeric" field="number" display="menu"></p-columnFilter>
             </div>
           </th>
           <th pSortableColumn="floatNumber">
             <div class="d-flex">
               <span jhiTranslate="demoApp.primeNgTable.floatNumber">Float Number</span>
               <p-sortIcon field="floatNumber"></p-sortIcon>
-              <p-columnFilter type="numeric" field="floatNumber" display="menu"></p-columnFilter>
             </div>
           </th>
           <th pSortableColumn="date" scope="col" jhiSortBy="date">
             <div class="d-flex">
               <span jhiTranslate="demoApp.primeNgTable.date">Date</span>
               <p-sortIcon field="date"></p-sortIcon>
-              <p-columnFilter type="date" field="date" display="menu"></p-columnFilter>
             </div>
           </th>
           <th pSortableColumn="zoneDate" scope="col" jhiSortBy="zoneDate">
             <div class="d-flex">
               <span jhiTranslate="demoApp.primeNgTable.zoneDate">Zone Date</span>
               <p-sortIcon field="zoneDate"></p-sortIcon>
-              <p-columnFilter type="date" field="zoneDate" display="menu"></p-columnFilter>
             </div>
           </th>
           <th scope="col" jhiSortBy="image">
@@ -101,34 +100,38 @@
             <div class="d-flex">
               <span jhiTranslate="demoApp.primeNgTable.longText">Long Text</span>
               <p-sortIcon field="longText"></p-sortIcon>
-              <p-columnFilter type="text" field="longText" display="menu"></p-columnFilter>
             </div>
           </th>
-          <th scope="col"></th>
+        </tr>
+        <tr>
+          <th><div></div></th>
+          <th>
+            <div><p-columnFilter type="text" field="id"></p-columnFilter></div>
+          </th>
+          <th>
+            <div><p-columnFilter type="text" field="text"></p-columnFilter></div>
+          </th>
+          <th>
+            <div><p-columnFilter type="numeric" field="number"></p-columnFilter></div>
+          </th>
+          <th>
+            <div><p-columnFilter type="numeric" field="floatNumber"></p-columnFilter></div>
+          </th>
+          <th>
+            <div><p-columnFilter type="date" field="date"></p-columnFilter></div>
+          </th>
+          <th>
+            <div><p-columnFilter type="date" field="zoneDate"></p-columnFilter></div>
+          </th>
+          <th><div></div></th>
+          <th>
+            <div><p-columnFilter type="text" field="longText"></p-columnFilter></div>
+          </th>
         </tr>
       </ng-template>
       <ng-template pTemplate="body" let-primeNgTable>
         <tr class="p-selectable-row" data-cy="entityTable">
-          <td>
-            <a [routerLink]="['/prime-ng-table', primeNgTable.id, 'view']">{{ primeNgTable.id }}</a>
-          </td>
-          <td>{{ primeNgTable.text }}</td>
-          <td>{{ primeNgTable.number }}</td>
-          <td>{{ primeNgTable.floatNumber }}</td>
-          <td>{{ primeNgTable.date | formatMediumDate }}</td>
-          <td>{{ primeNgTable.zoneDate | formatMediumDatetime }}</td>
-          <td>
-            <a *ngIf="primeNgTable.image" (click)="openFile(primeNgTable.image, primeNgTable.imageContentType)">
-              <img
-                [src]="'data:' + primeNgTable.imageContentType + ';base64,' + primeNgTable.image"
-                style="max-height: 30px"
-                alt="primeNgTable image"
-              />
-            </a>
-            <span *ngIf="primeNgTable.image">{{ primeNgTable.imageContentType }}, {{ byteSize(primeNgTable.image) }}</span>
-          </td>
-          <td>{{ primeNgTable.longText }}</td>
-          <td class="text-end">
+          <td class="text-end" pFrozenColumn>
             <div class="btn-group">
               <button
                 type="submit"
@@ -156,6 +159,27 @@
               </button>
             </div>
           </td>
+          <td pFrozenColumn>
+            <a [routerLink]="['/prime-ng-table', primeNgTable.id, 'view']">{{ primeNgTable.id }}</a>
+          </td>
+          <td>{{ primeNgTable.text }}</td>
+          <td>{{ primeNgTable.number }}</td>
+          <td>{{ primeNgTable.floatNumber }}</td>
+          <!-- <td>{{ primeNgTable.date | formatMediumDate }}</td> -->
+          <td>{{ primeNgTable.date | date: 'yyyy/MM/dd' }}</td>
+          <!-- <td>{{ primeNgTable.zoneDate | formatMediumDatetime }}</td> -->
+          <td>{{ primeNgTable.zoneDate | date: 'yyyy/MM/dd HH:mm:ss' }}</td>
+          <td>
+            <a *ngIf="primeNgTable.image" (click)="openFile(primeNgTable.image, primeNgTable.imageContentType)">
+              <img
+                [src]="'data:' + primeNgTable.imageContentType + ';base64,' + primeNgTable.image"
+                style="max-height: 30px"
+                alt="primeNgTable image"
+              />
+            </a>
+            <span *ngIf="primeNgTable.image">{{ primeNgTable.imageContentType }}, {{ byteSize(primeNgTable.image) }}</span>
+          </td>
+          <td>{{ primeNgTable.longText }}</td>
         </tr>
       </ng-template>
     </p-table>

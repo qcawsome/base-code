@@ -14,6 +14,7 @@ import { DataUtils } from 'app/core/util/data-util.service';
 import { FilterOptions, IFilterOptions, IFilterOption } from 'app/shared/filter/filter.model';
 import { LazyLoadEvent } from 'primeng/api';
 import { FilterMetadata } from 'primeng/api';
+import { Table } from 'primeng/table';
 
 @Component({
   selector: 'jhi-prime-ng-table',
@@ -178,20 +179,25 @@ export class PrimeNgTableComponent implements OnInit {
 
   protected loadData(event: LazyLoadEvent) {
     // filter
-    const filters = event.filters as { [s: string]: [FilterMetadata] };
-    let column: string = '';
     this.filters = new FilterOptions();
-    if (filters !== undefined && filters !== null) {
-      for (column in filters) {
-        console.log(column);
-        var ff = filters[column];
-        ff.forEach(meta => {
-          this.filters.addFilter(column + '.in', meta.value);
+    if (event != null) {
+      const filters = event.filters as { [s: string]: FilterMetadata };
+      let column: string = '';
+      if (filters !== undefined && filters !== null) {
+        for (column in filters) {
+          console.log(column);
+          var ff = filters[column];
 
-          // need to change here just for testing filter
+          this.filters.addFilter(column + '.contains', ff.value);
 
-          // date and zoneddatetime error format!!
-        });
+          // ff.forEach(meta => {
+          //   this.filters.addFilter(column + '.in', meta.value);
+
+          //   // need to change here just for testing filter
+
+          //   // date and zoneddatetime error format!!
+          // });
+        }
       }
     }
 
@@ -205,5 +211,8 @@ export class PrimeNgTableComponent implements OnInit {
 
   protected onFilterChange(columnName: string, event: any): void {
     this.loadData(event);
+  }
+  protected clear(table: Table) {
+    table.clear();
   }
 }
