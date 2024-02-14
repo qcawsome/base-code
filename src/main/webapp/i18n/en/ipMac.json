@@ -1,0 +1,28 @@
+{
+  "demoApp": {
+    "ipMac": {
+      "home": {
+        "title": "Ip Macs",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Ip Mac",
+        "createOrEditLabel": "Create or edit a Ip Mac",
+        "notFound": "No Ip Macs found"
+      },
+      "created": "A new Ip Mac is created with identifier {{ param }}",
+      "updated": "A Ip Mac is updated with identifier {{ param }}",
+      "deleted": "A Ip Mac is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Ip Mac {{ id }}?"
+      },
+      "detail": {
+        "title": "Ip Mac"
+      },
+      "id": "ID",
+      "ip": "Ip",
+      "mac": "Mac",
+      "networkStatus": "Network Status",
+      "agentStatus": "Agent Status",
+      "device": "Device"
+    }
+  }
+}

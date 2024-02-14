@@ -1,0 +1,28 @@
+{
+  "demoApp": {
+    "ipMac": {
+      "home": {
+        "title": "Ip Macs",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "创建新 Ip Mac",
+        "createOrEditLabel": "创建或编辑 Ip Mac",
+        "notFound": "No Ip Macs found"
+      },
+      "created": "Ip Mac {{ param }} 创建成功",
+      "updated": "Ip Mac {{ param }} 更新成功",
+      "deleted": "Ip Mac {{ param }} 删除成功",
+      "delete": {
+        "question": "你确定要删除 Ip Mac {{ id }} 吗？"
+      },
+      "detail": {
+        "title": "Ip Mac"
+      },
+      "id": "ID",
+      "ip": "Ip",
+      "mac": "Mac",
+      "networkStatus": "Network Status",
+      "agentStatus": "Agent Status",
+      "device": "Device"
+    }
+  }
+}

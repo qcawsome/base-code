@@ -1,0 +1,28 @@
+{
+  "demoApp": {
+    "ipMac": {
+      "home": {
+        "title": "IpMacs",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Ip Mac を追加",
+        "createOrEditLabel": "Ip Macを追加または編集",
+        "notFound": "No Ip Macs found"
+      },
+      "created": "A new Ip Mac is created with identifier {{ param }}",
+      "updated": "A Ip Mac is updated with identifier {{ param }}",
+      "deleted": "A Ip Mac is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Ip Mac {{ id }}を削除してもよろしいですか？"
+      },
+      "detail": {
+        "title": "Ip Mac"
+      },
+      "id": "ID",
+      "ip": "Ip",
+      "mac": "Mac",
+      "networkStatus": "Network Status",
+      "agentStatus": "Agent Status",
+      "device": "Device"
+    }
+  }
+}

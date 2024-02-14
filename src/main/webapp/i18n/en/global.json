@@ -10,6 +10,8 @@
         "sample": "Sample",
         "sampleUuid": "Sample Uuid",
         "primeNgTable": "Prime Ng Table",
+        "device": "Device",
+        "ipMac": "Ip Mac",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {

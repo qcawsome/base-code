@@ -19,6 +19,16 @@ import { RouterModule } from '@angular/router';
         data: { pageTitle: 'demoApp.primeNgTable.home.title' },
         loadChildren: () => import('./prime-ng-table/prime-ng-table.module').then(m => m.PrimeNgTableModule),
       },
+      {
+        path: 'device',
+        data: { pageTitle: 'demoApp.device.home.title' },
+        loadChildren: () => import('./device/device.module').then(m => m.DeviceModule),
+      },
+      {
+        path: 'ip-mac',
+        data: { pageTitle: 'demoApp.ipMac.home.title' },
+        loadChildren: () => import('./ip-mac/ip-mac.module').then(m => m.IpMacModule),
+      },
       /* jhipster-needle-add-entity-route - JHipster will add entity modules routes here */
     ]),
   ],

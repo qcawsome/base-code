@@ -1,0 +1,28 @@
+{
+  "demoApp": {
+    "ipMac": {
+      "home": {
+        "title": "Ip Macs",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "建立一筆新的 Ip Mac",
+        "createOrEditLabel": "建立或編輯 Ip Mac",
+        "notFound": "No Ip Macs found"
+      },
+      "created": "新的 Ip Mac 建立成功，識別碼為 {{ param }}",
+      "updated": "識別碼為 {{ param }} 的 Ip Mac 更新成功",
+      "deleted": "識別碼為 {{ param }} 的 Ip Mac 刪除成功",
+      "delete": {
+        "question": "您確定要刪除 Ip Mac {{ id }} 嗎?"
+      },
+      "detail": {
+        "title": "Ip Mac"
+      },
+      "id": "ID",
+      "ip": "Ip",
+      "mac": "Mac",
+      "networkStatus": "Network Status",
+      "agentStatus": "Agent Status",
+      "device": "Device"
+    }
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "demoApp": {
+    "device": {
+      "home": {
+        "title": "Devices",
+        "refreshListLabel": "Liste aktualisieren",
+        "createLabel": "Device erstellen",
+        "createOrEditLabel": "Device erstellen oder bearbeiten",
+        "notFound": "Keine Devices gefunden"
+      },
+      "created": "Device erstellt mit ID {{ param }}",
+      "updated": "Device aktualisiert mit ID {{ param }}",
+      "deleted": "Device gelöscht mit ID {{ param }}",
+      "delete": {
+        "question": "Soll Device {{ id }} wirklich dauerhaft gelöscht werden?"
+      },
+      "detail": {
+        "title": "Device"
+      },
+      "id": "ID",
+      "name": "Name",
+      "agentStatus": "Agent Status",
+      "networkStatus": "Network Status",
+      "ipMacs": "Ip Macs"
+    }
+  }
+}

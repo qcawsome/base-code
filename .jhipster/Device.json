@@ -1,0 +1,31 @@
+{
+  "changelogDate": "20240214085601",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "agentStatus",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "networkStatus",
+      "fieldType": "String"
+    }
+  ],
+  "jpaMetamodelFiltering": true,
+  "name": "Device",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "ipMac",
+      "otherEntityRelationshipName": "device",
+      "relationshipName": "ipMacs",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "service": "serviceClass"
+}

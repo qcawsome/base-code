@@ -1,0 +1,50 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="ipMac">
+      <h2 data-cy="ipMacDetailsHeading"><span jhiTranslate="demoApp.ipMac.detail.title">Ip Mac</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ ipMac.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="demoApp.ipMac.ip">Ip</span></dt>
+        <dd>
+          <span>{{ ipMac.ip }}</span>
+        </dd>
+        <dt><span jhiTranslate="demoApp.ipMac.mac">Mac</span></dt>
+        <dd>
+          <span>{{ ipMac.mac }}</span>
+        </dd>
+        <dt><span jhiTranslate="demoApp.ipMac.networkStatus">Network Status</span></dt>
+        <dd>
+          <span>{{ ipMac.networkStatus }}</span>
+        </dd>
+        <dt><span jhiTranslate="demoApp.ipMac.agentStatus">Agent Status</span></dt>
+        <dd>
+          <span>{{ ipMac.agentStatus }}</span>
+        </dd>
+        <dt><span jhiTranslate="demoApp.ipMac.device">Device</span></dt>
+        <dd>
+          <div *ngIf="ipMac.device">
+            <a [routerLink]="['/device', ipMac.device.id, 'view']">{{ ipMac.device.name }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/ip-mac', ipMac.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

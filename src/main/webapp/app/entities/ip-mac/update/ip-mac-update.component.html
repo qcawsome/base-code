@@ -1,0 +1,83 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-ip-mac-heading" data-cy="IpMacCreateUpdateHeading" jhiTranslate="demoApp.ipMac.home.createOrEditLabel">
+        Create or edit a Ip Mac
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" *ngIf="editForm.controls.id.value !== null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="demoApp.ipMac.ip" for="field_ip">Ip</label>
+          <input type="text" class="form-control" name="ip" id="field_ip" data-cy="ip" formControlName="ip" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="demoApp.ipMac.mac" for="field_mac">Mac</label>
+          <input type="text" class="form-control" name="mac" id="field_mac" data-cy="mac" formControlName="mac" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="demoApp.ipMac.networkStatus" for="field_networkStatus">Network Status</label>
+          <input
+            type="text"
+            class="form-control"
+            name="networkStatus"
+            id="field_networkStatus"
+            data-cy="networkStatus"
+            formControlName="networkStatus"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="demoApp.ipMac.agentStatus" for="field_agentStatus">Agent Status</label>
+          <input
+            type="text"
+            class="form-control"
+            name="agentStatus"
+            id="field_agentStatus"
+            data-cy="agentStatus"
+            formControlName="agentStatus"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="demoApp.ipMac.device" for="field_device">Device</label>
+          <select
+            class="form-control"
+            id="field_device"
+            data-cy="device"
+            name="device"
+            formControlName="device"
+            [compareWith]="compareDevice"
+          >
+            <option [ngValue]="null"></option>
+            <option [ngValue]="deviceOption" *ngFor="let deviceOption of devicesSharedCollection">{{ deviceOption.name }}</option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

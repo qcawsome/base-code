@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <!--
+        Added the constraints for entity IpMac.
+    -->
+    <changeSet id="20240214090211-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="device_id"
+                                 baseTableName="ip_mac"
+                                 constraintName="fk_ip_mac__device_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="device"/>
+    </changeSet>
+</databaseChangeLog>
